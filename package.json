@@ -2,7 +2,7 @@
   "name": "space-pilot",
   "version": "1.0.0",
   "description": "A small demo that shows how to manage game entities.",
-  "homepage": "https://cc258.github.io/auto-pilot ",
+  "homepage": ".",
   "keywords": [
     "zustand",
     "physics",
