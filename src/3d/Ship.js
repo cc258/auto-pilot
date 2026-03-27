@@ -30,15 +30,18 @@ export default function Ship() {
     if (health <= 0) {
       return
     }
-
+  
     main.current.position.z = Math.sin(clock.getElapsedTime() * 40) * Math.PI * 0.2
-
-    main.current.rotation.z += (mouse.x / 500 - main.current.rotation.z) * 0.2
-    main.current.rotation.x += (-mouse.y / 1200 - main.current.rotation.x) * 0.2
-    main.current.rotation.y += (-mouse.x / 1200 - main.current.rotation.y) * 0.2
-    main.current.position.x += (mouse.x / 10 - main.current.position.x) * 0.2
-    main.current.position.y += (25 + -mouse.y / 10 - main.current.position.y) * 0.2
-
+  
+    // ========= 🔥 防卡死修复（唯一改动） =========
+    const smooth = 0.15
+    main.current.rotation.z = THREE.MathUtils.lerp(main.current.rotation.z, mouse.x / 500, smooth)
+    main.current.rotation.x = THREE.MathUtils.lerp(main.current.rotation.x, -mouse.y / 1200, smooth)
+    main.current.rotation.y = THREE.MathUtils.lerp(main.current.rotation.y, -mouse.x / 1200, smooth)
+    main.current.position.x = THREE.MathUtils.lerp(main.current.position.x, mouse.x / 10, smooth)
+    main.current.position.y = THREE.MathUtils.lerp(main.current.position.y, 25 + -mouse.y / 10, smooth)
+    // ============================================
+  
     exhaust.current.scale.x = 1 + Math.sin(clock.getElapsedTime() * 200)
     exhaust.current.scale.y = 1 + Math.sin(clock.getElapsedTime() * 200)
     for (let i = 0; i < lasers.length; i++) {
@@ -46,14 +49,12 @@ export default function Ship() {
       group.position.z -= 20
     }
     laserLight.current.intensity += ((lasers.length && Date.now() - lasers[lasers.length - 1] < 100 ? 20 : 0) - laserLight.current.intensity) * 0.3
-
-    // Get ships orientation and save it to the stores ray
+  
     main.current.getWorldPosition(position)
     main.current.getWorldDirection(direction)
     ray.origin.copy(position)
     ray.direction.copy(direction.negate())
-
-    // ...
+  
     crossMaterial.color = mutation.hits ? lightgreen : hotpink
     cross.current.visible = !mutation.hits
     target.current.visible = !!mutation.hits
