@@ -1,6 +1,6 @@
 # Install
 
-Nodejs v14.17.5
+Nodejs v24.14.0
 
 # Get Start
 
@@ -30,4 +30,4 @@ PPT 讲解大概的实现逻辑，可以发散思维和展开想象。
 开源的第三方依赖，Threejs.
 
 决赛
-10 分钟 DEMO 时长。
+
