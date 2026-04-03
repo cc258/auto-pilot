@@ -27,7 +27,7 @@ jobs:
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.TX_HOST }}
-          username: ${{ secrets.TX_USER }}
+          username: ${{ secrets.TX_ROOT }}
           key: ${{ secrets.TX_KEY }}
           source: "build/*"
           target: "~/www/web/auto-pilot/build"
