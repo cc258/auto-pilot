@@ -19,7 +19,7 @@ jobs:
       
       - name: Install and Build
         run: |
-          npm ci
+          npm install
           npm run build
       
       # 2. 只同步 build 目录到服务器
