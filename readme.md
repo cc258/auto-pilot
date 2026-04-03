@@ -2,7 +2,7 @@
 
 Nodejs v24.14.0
 
-# Get Start 123
+# Get Start
 
 ```shell
 npm start
