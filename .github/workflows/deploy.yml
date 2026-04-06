@@ -30,5 +30,4 @@ jobs:
           username: ${{ secrets.TX_USER }}
           key: ${{ secrets.TX_KEY }}
           source: "build/*"
-          target: "~/www/web/auto-pilot/build"
-          strip_components: 1  # 去掉 build/ 前缀
+          target: "/root/www/web/auto-pilot/"
